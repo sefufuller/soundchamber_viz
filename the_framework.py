@@ -13,7 +13,7 @@ class App:
  
     def on_init(self):
         pygame.init()
-        self._display_surf = pygame.display.set_mode((350,350), pygame.HWSURFACE)
+        self._display_surf = pygame.display.set_mode((350,350), pygame.NOFRAME)
         self._running = True
         #self._image_surf = pygame.image.load("myimage.jpg").convert()
  
