@@ -21,8 +21,8 @@ class App:
     def on_loop(self):
         pass
     def on_render(self):
-        
-        self._display_surf.blit(rect(self._display_surf, (255, 255, 255), (0, 0, 10, 10)))
+        pygame.draw.lines(self.diplay_surf, black, [(20, 4), (40, 30), (30, 80), (40, 80)], 1)
+        self._display_surf.blit()
         pygame.display.flip()
  
     def on_cleanup(self):
