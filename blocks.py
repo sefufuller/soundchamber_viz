@@ -13,7 +13,7 @@ class App:
  
     def on_init(self):
         pygame.init()
-        self._display_surf = pygame.display.set_mode((700,400), pygame.NOFRAME)
+        self._display_surf = pygame.display.set_mode((700,25), pygame.NOFRAME)
         self._running = True
         #self._image_surf = pygame.image.load("myimage.jpg").convert()
  
@@ -24,11 +24,12 @@ class App:
         pass
     def on_render(self):
 	lr = self._randnum
-        pygame.draw.rect(self._display_surf, (200, lr.randint(1,30), 220), (0,0, 20, 20))
+        pygame.draw.rect(self._display_surf, (200, lr.randint(1,30), 220), (0,0, lr.randint(20, 900), 20), 5)
         time.sleep(.5)
-	self._display_surf.blit()
+	#self._display_surf.blit()
         pygame.display.flip()
 	pygame.display.update()
+	self._display_surf.fill((0,249,80))
  
     def on_cleanup(self):
         pygame.quit()

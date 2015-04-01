@@ -13,22 +13,34 @@ class App:
  
     def on_init(self):
         pygame.init()
-        self._display_surf = pygame.display.set_mode((700,400), pygame.NOFRAME)
+        self._display_surf = pygame.display.set_mode((700,25), pygame.NOFRAME)
         self._running = True
+	self._RECT = self.slider()
         #self._image_surf = pygame.image.load("myimage.jpg").convert()
  
     def on_event(self, event):
         if event.type == QUIT:
             self._running = False
+
     def on_loop(self):
         pass
+
+    def slider(self):
+	x = 0
+	y = 0
+	a = 0
+	b = 0
+	return [0,0,400,30]
+
     def on_render(self):
 	lr = self._randnum
-        pygame.draw.lines(self._display_surf, (lr.randint(203, 244),lr.randint(2, 200),lr.randint(1, 80)), False, [(lr.randint(1,100), lr.randint(53, 60)), (lr.randint(105, 905), lr.randint(3,440)), (lr.randint(33, 630), 80), (lr.randint(300,899), 80)], 5)
-        time.sleep(.5)
+	event = pygame.event.poll()
+        pygame.draw.rect(self._display_surf, (200, lr.randint(1,30), 220), self._RECT)
+	#self._display_surf.blit()
         pygame.display.flip()
 	pygame.display.update()
- 	self._display_surf.fill((139,135,73))
+	self._display_surf.fill((0,249,80))
+ 
     def on_cleanup(self):
         pygame.quit()
  
@@ -39,6 +51,8 @@ class App:
         while( self._running ):
             for event in pygame.event.get():
                 self.on_event(event)
+	    if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+		self._RECT[2], y = event.pos
             self.on_loop()
             self.on_render()
         self.on_cleanup()
